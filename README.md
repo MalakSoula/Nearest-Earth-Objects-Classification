@@ -1,100 +1,132 @@
 # Nearest-Earth-Objects-Classification
 
-## Project Overview
-This project aims to classify Near-Earth Objects (NEOs) as hazardous or non-hazardous based on their features. The dataset contains information about NEOs from 1910 to 2024, including their orbital parameters and hazard status. The goal is to build a machine learning model to predict whether an NEO is hazardous.
+## **Project Overview**
+This project aims to classify **Near-Earth Objects (NEOs)** as hazardous or non-hazardous based on their features. The dataset contains information about NEOs from **1910 to 2024**, including their **orbital parameters** and **hazard status**. The goal is to build a **machine learning model** to predict whether an NEO is hazardous.
 
-## Dataset
-The dataset used in this project is `nearest-earth-objects(1910-2024).csv`. It contains the following features:
-- `neo_id`: Unique identifier for the NEO.
-- `name`: Name of the NEO.
-- `est_diameter_min`: Minimum estimated diameter of the NEO.
-- `est_diameter_max`: Maximum estimated diameter of the NEO.
-- `relative_velocity`: Relative velocity of the NEO.
-- `miss_distance`: Distance by which the NEO missed Earth.
-- `orbiting_body`: The body the NEO is orbiting.
-- `is_hazardous`: Binary target variable indicating whether the NEO is hazardous (1) or not (0).
+---
 
-## Approach
-1. **Data Cleaning**: Removed missing values, duplicates, and irrelevant columns (`neo_id`, `name`, `orbiting_body`).
-2. **Exploratory Data Analysis (EDA)**: Analyzed the distribution of the target variable and feature correlations.
-3. **Feature Selection**: Used `SelectKBest` with the chi-squared test to select the top 4 features.
-4. **Handling Class Imbalance**: Applied SMOTE to balance the dataset.
-5. **Model Training**: Trained a Random Forest classifier on the balanced dataset.
-6. **Model Evaluation**: Evaluated the model using metrics like accuracy, precision, recall, F1 score, balanced accuracy, and MCC. Visualized the confusion matrix and ROC curve.
+## **📂 Dataset**
+The dataset used in this project is **nearest-earth-objects(1910-2024).csv**.  
+It contains the following features:
 
-## Key Findings
-- The dataset was highly imbalanced, with only a small percentage of NEOs being hazardous.
-- The top 4 features selected by `SelectKBest` were:
-- 1- est_diameter_max
-- 2- est_diameter_min
-- 3- relative_velocity
-- 4- miss_distance.
-- After applying SMOTE, the dataset was balanced, and the model performance is:
-- 1- Accuracy: [Insert Accuracy]
-- 2- Precision: [Insert Precision]
-- 3- Recall: [Insert Recall]
-- 4- F1 Score: [Insert F1 Score]
-- 5- Balanced Accuracy: [Insert Balanced Accuracy]
-- 6- MCC: [Insert MCC]
-- 7- ROC AUC: [Insert AUC]
+- **neo_id**: Unique identifier for the NEO.
+- **name**: Name of the NEO.
+- **est_diameter_min**: Minimum estimated diameter of the NEO.
+- **est_diameter_max**: Maximum estimated diameter of the NEO.
+- **relative_velocity**: Relative velocity of the NEO.
+- **miss_distance**: Distance by which the NEO missed Earth.
+- **orbiting_body**: The body the NEO is orbiting.
+- **is_hazardous**: **(Target Variable)** Binary label indicating whether the NEO is hazardous (**1**) or not (**0**).
 
-# Visualizations
-1. Confusion Matrix:
+---
 
-The confusion matrix provides a detailed breakdown of the model's predictions:
+## **🛠 Approach**
+### **1️⃣ Data Cleaning**
+- Removed **missing values, duplicates**, and **irrelevant columns** (**neo_id, name, orbiting_body**).
 
-1- True Positives (TP): Correctly predicted hazardous NEOs.
+### **2️⃣ Exploratory Data Analysis (EDA)**
+- Analyzed **target variable distribution** and **feature correlations**.
 
-2- True Negatives (TN): Correctly predicted non-hazardous NEOs.
+### **3️⃣ Feature Selection**
+- Used **SelectKBest** with the **chi-squared test** to select the **top 4 features**.
 
-3- False Positives (FP): Non-hazardous NEOs incorrectly predicted as hazardous.
+### **4️⃣ Handling Class Imbalance**
+- Applied **SMOTE (Synthetic Minority Oversampling Technique)** to balance the dataset.
 
-4- False Negatives (FN): Hazardous NEOs incorrectly predicted as non-hazardous.
+### **5️⃣ Model Training**
+- Trained a **Random Forest Classifier** on the balanced dataset.
 
-![download (2)](https://github.com/user-attachments/assets/fd33000d-f985-46e1-931c-c7edc18514bc)
+### **6️⃣ Model Evaluation**
+- Evaluated the model using the following metrics:
+  - **Accuracy**
+  - **Precision**
+  - **Recall**
+  - **F1 Score**
+  - **Balanced Accuracy**
+  - **Matthews Correlation Coefficient (MCC)**
+  - **ROC AUC Score**
+- Visualized the **Confusion Matrix** and **ROC Curve**.
 
+---
 
-3. ROC Curve:
+## **🔑 Key Findings**
+- The dataset was **highly imbalanced**, with only a **small percentage** of NEOs being hazardous.
+- The **top 4 features** selected by **SelectKBest** were:
+  1. **est_diameter_max**
+  2. **est_diameter_min**
+  3. **relative_velocity**
+  4. **miss_distance**
 
-The ROC curve visualizes the trade-off between the True Positive Rate (TPR) and False Positive Rate (FPR) at different classification thresholds. The Area Under the Curve (AUC) is a measure of the model's ability to distinguish between the two classes.
+### **📊 Model Performance**
+After applying **SMOTE**, the dataset was balanced, and the model achieved:
 
-![download (3)](https://github.com/user-attachments/assets/16590678-330c-40ea-b3fe-7cde8ff3cbbe)
+- **Accuracy**: **0.9503**
+- **Precision**: **0.9496**
+- **Recall**: **0.9511**
+- **F1 Score**: **0.9503**
+- **Balanced Accuracy**: **0.9503**
+- **MCC**: **0.9006**
 
-   
-5. Target Variable Distribution
-  
-**Before SMOTE**:
+---
 
-The target variable (is_hazardous) was highly imbalanced, with a majority of NEOs classified as non-hazardous. This was visualized using a count plot and a pie chart.
+## **📈 Visualizations**
+### **Confusion Matrix**
+The confusion matrix provides a breakdown of the model's predictions:
 
-![download](https://github.com/user-attachments/assets/e90df52a-83ac-49e6-9229-5fb2db9e3b18)
+- ✅ **True Positives (TP)**: Correctly predicted hazardous NEOs.
+- ✅ **True Negatives (TN)**: Correctly predicted non-hazardous NEOs.
+- ❌ **False Positives (FP)**: Non-hazardous NEOs incorrectly predicted as hazardous.
+- ❌ **False Negatives (FN)**: Hazardous NEOs incorrectly predicted as non-hazardous.
 
+![Confusion Matrix](images/confusion_matrix.png)
 
-**After SMOTE**:
+---
 
-After applying SMOTE, the dataset was balanced, with an equal number of hazardous and non-hazardous NEOs. This was visualized using a count plot.
+### **ROC Curve**
+The **ROC curve** visualizes the trade-off between the **True Positive Rate (TPR)** and **False Positive Rate (FPR)**.  
+The **Area Under the Curve (AUC)** is a measure of the model's ability to distinguish between the two classes.
 
-![download (1)](https://github.com/user-attachments/assets/a22a3824-352d-4d4a-b2cd-91d097a51ade)
+![ROC Curve](images/roc_curve.png)
 
+---
 
+## **🎯 Target Variable Distribution**
+### **Before SMOTE:**
+The target variable (**is_hazardous**) was **highly imbalanced**, with most NEOs classified as non-hazardous.  
+This was visualized using a **count plot** and a **pie chart**.
 
-## Repository Structure
-project/
+![Before SMOTE](images/before_smote.png)
 
-├── README.md
+### **After SMOTE:**
+After applying **SMOTE**, the dataset was **balanced**, with an equal number of hazardous and non-hazardous NEOs.
 
-├── nearest_earth_objects_classification.ipynb
+![After SMOTE](images/after_smote.png)
 
-├── nearest-earth-objects(1910-2024).csv
+---
 
-├── images/
+## **🚀 How to Run the Code**
+To run this project locally, follow these steps:
 
-│   ├── confusion_matrix.png
+### **1️⃣ Clone the repository**
+```sh
+git clone https://github.com/MalakSoula/Nearest-Earth-Objects-Classification.git
+```
+### **2️⃣ Navigate to the project directory**
+```sh
+cd Nearest-Earth-Objects-Classification
+```
+### **3️⃣ Open the Jupyter Notebook**
+```sh
+jupyter notebook nearest_earth_objects_classification.ipynb
+```
 
-│   ├── roc_curve.png
+# 📦 Dependencies
 
-│   ├── before_smote.png
+This project requires Python 3.x and the following libraries:
 
-│   └── after_smote.png
-
-└── requirements.txt
+`pandas`
+`numpy`
+`scikit-learn`
+`imblearn`
+`seaborn`
+`matplotlib`
